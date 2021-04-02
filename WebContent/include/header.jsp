@@ -126,4 +126,12 @@
 	</div>
 	<!-- ======= End loginModal ======= -->
 </body>
+
+<script>
+	if("${msg}"){
+		alert("${msg}");
+	}
+</script>
+<c:remove var="msg"/>
+
 </html>
