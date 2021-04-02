@@ -2,7 +2,7 @@ package backend.dto;
 
 public class House {
 	private String aptName;
-	private String dealAmount;
+	private int dealAmount;
 	private double area;
 	private int dealYear;
 	private int dealMonth;
@@ -12,7 +12,7 @@ public class House {
 		super();
 	}
 
-	public House(String aptName, String dealAmount, double area, int dealYear, int dealMonth, int dealday) {
+	public House(String aptName, int dealAmount, double area, int dealYear, int dealMonth, int dealday) {
 		super();
 		this.aptName = aptName;
 		this.dealAmount = dealAmount;
@@ -28,10 +28,10 @@ public class House {
 	public void setAptName(String aptName) {
 		this.aptName = aptName;
 	}
-	public String getDealAmount() {
+	public int getDealAmount() {
 		return dealAmount;
 	}
-	public void setDealAmount(String dealAmount) {
+	public void setDealAmount(int dealAmount) {
 		this.dealAmount = dealAmount;
 	}
 	public double getArea() {
