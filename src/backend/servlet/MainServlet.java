@@ -2,8 +2,9 @@ package backend.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import javax.servlet.RequestDispatcher;
 import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,13 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import backend.dto.User;
-import backend.model.service.UserServiceImpl;
-
 import com.google.gson.Gson;
 
-import backend.model.dao.DongCollectionImpl;
+import backend.dto.House;
+import backend.dto.User;
+import backend.model.dao.AptInfoDaoImpl;
+import backend.model.service.AptInfoServiceImpl;
 import backend.model.service.DongCollectionServiceImpl;
+import backend.model.service.UserServiceImpl;
 
 /**
  * Servlet implementation class MainServlet
@@ -43,19 +45,62 @@ public class MainServlet extends HttpServlet {
 		try {
 			if (act == null) {
 				response.sendRedirect(root + "/index.jsp");
-			} else if (act.equals("login")) {
+			} else if (act.equals("login")) { // 로그인
 				login(request, response);
-			} else if (act.equals("logout")) {
+			} else if (act.equals("logout")) { // 로그아웃
 				logout(request, response);
-			} else if (act.equals("gotosignup")) {
+			} else if (act.equals("gotosignup")) { // 회원가입 페이지로 이동
 				response.sendRedirect(root + "/signup.jsp");
-			} else if (act.equals("signup")) {
+			} else if (act.equals("signup")) { // 회원가입
 				signup(request, response);
-			} else if(act.equals("gu")) {
-			callGu(request, response);
-		}
+			} else if (act.equals("gu")) { // 해당 행정구역의 "법정동" 불러오기
+				callGu(request, response);
+			} else if (act.equals("search")) { // 기본 검색
+				search(request, response);
+			} else if (act.equals("searchCategory")) { // 아파트 or 실거래별 검색
+				searchCategory(request, response);
+			}
 		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+	}
+
+	// 기본 검색 (행정구역 기준)
+	protected void search(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		// 1. 파라미터 확인
+		String city = request.getParameter("city");
+		String gugun = request.getParameter("gu");
+		String dong = request.getParameter("dong");
+
+		// 2. 비즈니스 로직
+		List<House> list = AptInfoServiceImpl.getAptInfoServiceImpl().getSearchList(dong);
+		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
+		Gson gson = new Gson();
+		String json = gson.toJson(list);
+
+		// 3. View 출력
+		response.setContentType("application/json;charset=utf-8");
+		response.getWriter().append(json);
+	}
+
+	// 기본 검색 (아파트, 실거래가 기준)
+	protected void searchCategory(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+
+		// 1. 파라미터 확인
+		String searchTitle = request.getParameter("searchTitle");
+		String searchText = request.getParameter("searchText");
+
+		// 2. 비즈니스 로직
+		List<House> list = AptInfoServiceImpl.getAptInfoServiceImpl().getSearchTitleList(searchTitle, searchText);
+		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
+		Gson gson = new Gson();
+		String json = gson.toJson(list);
+
+		// 3. View 출력
+		response.setContentType("application/json;charset=utf-8");
+		response.getWriter().append(json);
 	}
 
 	private void signup(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -64,10 +109,10 @@ public class MainServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		String tel = request.getParameter("tel");
-		
+
 		User user = new User(id, password, name, address, tel);
 		UserServiceImpl.getUserService().siguUp(user);
-		
+
 		String path = "/index.jsp";
 		response.sendRedirect(root + path);
 	}
@@ -78,8 +123,8 @@ public class MainServlet extends HttpServlet {
 		String password = request.getParameter("password");
 
 		User user = UserServiceImpl.getUserService().login(id, password);
-		
-		//String nowPath = request.getRequestURL().toString();
+
+		// String nowPath = request.getRequestURL().toString();
 		String path = "/index.jsp";
 		if (user != null) {
 			HttpSession session = request.getSession();
@@ -91,7 +136,7 @@ public class MainServlet extends HttpServlet {
 			disp.forward(request, response);
 		}
 	}
-	
+
 	protected void logout(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		HttpSession session = request.getSession();
@@ -99,11 +144,11 @@ public class MainServlet extends HttpServlet {
 
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
-	
+
 	// index, detail 페이지에서 "구"를 선택 시, 해당 구의 법정동을 보여줌
 	protected void callGu(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
-		
+
 		// 1. 파라미터 확인
 		String guName = request.getParameter("gu");
 
@@ -112,7 +157,7 @@ public class MainServlet extends HttpServlet {
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
-		
+
 		// 3. View 연결
 		// Data만 보낼 때 아래와 같이 작성하면 된다.
 		response.setContentType("application/json;charset=utf-8");

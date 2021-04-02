@@ -2,7 +2,7 @@
     <wb-module deploy-name="HappyHouse_BackEnd_서울_12반_김재현_김효린">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="HappyHouse_BackEnd_서울_12반_김재현_김효린"/>
         <property name="java-output-path" value="/HappyHouse_BackEnd_서울_12반_김재현_김효린/build/classes"/>
+        <property name="context-root" value="HappyHouse_BackEnd"/>
     </wb-module>
 </project-modules>
