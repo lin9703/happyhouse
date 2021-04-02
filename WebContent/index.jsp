@@ -39,7 +39,7 @@
 						</select>
 					</div>
 					<div class="form-group md-1 pr-3">
-						<select class="form-control" name="dongcode" id="gu">
+						<select class="form-control" name="gu" id="gu">
 							<option value="all">시/구/군</option>
 							<option value="도봉구">도봉구</option>
 							<option value="은평구">은평구</option>
@@ -70,7 +70,7 @@
 					</div>
 					<div class="form-group md-1">
 						<select class="form-control" name="dong" id="dong">
-							<option value="all">동</option>
+							<option value="all" id="dongOption">동</option>
 						</select>
 					</div>
 

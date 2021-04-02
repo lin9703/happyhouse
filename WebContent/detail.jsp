@@ -21,43 +21,12 @@
 <%@ include file="/include/header.jsp" %>
 <body>
 
-	<!-- ======= Start loginModal ======= -->
-	<div id="loginModal" class="modal fade">
-		<div class="modal-dialog modal-login">
-			<div class="modal-content">
-				<form action="" method="post">
-					<div class="modal-header">
-						<h4 class="modal-title">Login</h4>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>아이디</label> <input type="text" class="form-control"
-								required="required">
-						</div>
-						<div class="form-group">
-							<div class="clearfix">
-								<label>비밀번호</label> <a href="#" class="float-right text-muted"><small>비밀번호찾기</small></a>
-							</div>
-							<input type="password" class="form-control" required="required">
-						</div>
-					</div>
-					<div class="form-group justify-content-center d-flex">
-						<input type="submit" class="btn btn-primary" value="로그인">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- ======= End loginModal ======= -->
-
 	<section id="hero">
 		<div class="hero-container" data-aos="fade-in">
 
 			<div
 				class="sorting-filters text-center mb-20 d-flex justify-content-center">
-				<form class="form-inline" id="frm" action="searchRecentHouseDeal.do">
+				<form class="form-inline" id="frm" action="${root }/main">
 					<!-- <input type="hidden" id="code"  name="code" value="code"/> -->
 					<div class="form-group md pr-3">
 						<select class="form-control" name="city" id="city">
@@ -81,7 +50,7 @@
 						</select>
 					</div>
 					<div class="form-group md-1 pr-3">
-						<select class="form-control" name="dongcode" id="gu">
+						<select class="form-control" name="gu" id="gu">
 							<option value="all">시/구/군</option>
 							<option value="도봉구">도봉구</option>
 							<option value="은평구">은평구</option>
