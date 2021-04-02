@@ -49,12 +49,14 @@ public class AptInfoDaoImpl implements AptInfoDao {
 			while (rset.next()) {
 				String aptName = rset.getString("AptName");
 				String dealAmount = rset.getString("dealAmount");
+				dealAmount = dealAmount.replace(",", "").trim();
+				int amount = Integer.parseInt(dealAmount);
 				double area = rset.getDouble("area");
 				int dealYear = rset.getInt("dealYear");
 				int dealMonth = rset.getInt("dealMonth");
 				int dealDay = rset.getInt("dealDay");
 
-				list.add(new House(aptName, dealAmount, area, dealYear, dealMonth, dealDay));
+				list.add(new House(aptName, amount, area, dealYear, dealMonth, dealDay));
 			}
 
 		} finally {
@@ -73,36 +75,66 @@ public class AptInfoDaoImpl implements AptInfoDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = null;
-		
+
 		// 1. sql 문
 		if (searchTitle.equals("apt")) {
 			sql = "select * from housedeal where AptName like ?";
-		} else if (searchTitle.equals("deal")) {
-			sql = "select * from housedeal where dealAmount >= ?";
-		}
 
-		// 2. DB 연결
-		try {
-			con = util.getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, "%"+searchText+"%");
-			rset = pstmt.executeQuery();
+			// 2. DB 연결
+			try {
+				con = util.getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, "%" + searchText + "%");
+				rset = pstmt.executeQuery();
 
-			while (rset.next()) {
-				String aptName = rset.getString("AptName");
-				String dealAmount = rset.getString("dealAmount");
-				double area = rset.getDouble("area");
-				int dealYear = rset.getInt("dealYear");
-				int dealMonth = rset.getInt("dealMonth");
-				int dealDay = rset.getInt("dealDay");
+				while (rset.next()) {
+					String aptName = rset.getString("AptName");
+					String dealAmount = rset.getString("dealAmount");
+					dealAmount = dealAmount.replace(",", "").trim();
+					int amount = Integer.parseInt(dealAmount);
+					double area = rset.getDouble("area");
+					int dealYear = rset.getInt("dealYear");
+					int dealMonth = rset.getInt("dealMonth");
+					int dealDay = rset.getInt("dealDay");
 
-				list.add(new House(aptName, dealAmount, area, dealYear, dealMonth, dealDay));
+					list.add(new House(aptName, amount, area, dealYear, dealMonth, dealDay));
+				}
+
+			} finally {
+				util.close(rset, pstmt, con);
 			}
+		} else if (searchTitle.equals("deal")) {
+			sql = "select * from housedeal";
 
-		} finally {
-			util.close(rset, pstmt, con);
+			try {
+				con = util.getConnection();
+				pstmt = con.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+
+				searchText = searchText.replace(",", "");
+				int amount = Integer.parseInt(searchText);
+
+				while (rset.next()) {
+					String aptName = rset.getString("AptName");
+					String dealAmount = rset.getString("dealAmount");
+					dealAmount = dealAmount.replace(",", "").trim();
+					int amount1 = Integer.parseInt(dealAmount);
+
+					if (amount > amount1)
+						continue;
+
+					double area = rset.getDouble("area");
+					int dealYear = rset.getInt("dealYear");
+					int dealMonth = rset.getInt("dealMonth");
+					int dealDay = rset.getInt("dealDay");
+
+					list.add(new House(aptName, amount1, area, dealYear, dealMonth, dealDay));
+				}
+
+			} finally {
+				util.close(rset, pstmt, con);
+			}
 		}
-
 		return list;
 	}
 
