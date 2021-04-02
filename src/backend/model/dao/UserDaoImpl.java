@@ -80,4 +80,46 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public void update(User user) throws SQLException {
+		String sql = "update user set password=?, name=?, address=?, tel=? where id=?";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = util.getConnection();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user.getPassword());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getAddress());
+			pstmt.setString(4, user.getTel());
+			pstmt.setString(5, user.getId());
+
+			pstmt.executeUpdate();
+		} finally {
+			util.close(null, pstmt, con);
+		}
+	}
+
+	@Override
+	public void delete(String id) throws SQLException {
+String sql = "delete from user where id=?";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = util.getConnection();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			pstmt.executeUpdate();
+		} finally {
+			util.close(null, pstmt, con);
+		}
+	}
+
 }

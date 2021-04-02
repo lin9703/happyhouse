@@ -16,7 +16,6 @@ import backend.model.service.UserServiceImpl;
 
 import com.google.gson.Gson;
 
-import backend.model.dao.DongCollectionImpl;
 import backend.model.service.DongCollectionServiceImpl;
 
 /**
@@ -53,11 +52,41 @@ public class MainServlet extends HttpServlet {
 				signup(request, response);
 			} else if (act.equals("userinfo")) {
 				userinfo(request, response);
+			} else if (act.equals("editinfo")) {
+				String button = request.getParameter("button");
+				if(button.equals("update"))
+					updateinfo(request, response);
+				else 
+					deleteinfo(request, response);
 			} else if (act.equals("gu")) {
 				callGu(request, response);
 			} 
 		} catch (SQLException e) {
 		}
+	}
+
+	private void deleteinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		String id = request.getParameter("id");
+		
+		UserServiceImpl.getUserService().delete(id);
+
+		logout(request, response);
+	}
+
+	private void updateinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String tel = request.getParameter("tel");
+
+		User user = new User(id, password, name, address, tel);
+		UserServiceImpl.getUserService().update(user);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("userinfo", user);
+
+		userinfo(request, response);
 	}
 
 	private void userinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -83,7 +112,7 @@ public class MainServlet extends HttpServlet {
 
 		User user = new User(id, password, name, address, tel);
 		UserServiceImpl.getUserService().siguUp(user);
-
+		
 		String path = "/index.jsp";
 		response.sendRedirect(root + path);
 	}

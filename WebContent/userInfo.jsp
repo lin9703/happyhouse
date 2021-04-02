@@ -104,7 +104,9 @@
 	<!-- ======= Hero Section ======= -->
 	<section id="hero">
 		<div class="signup-form">
-			<form action="" method="post" class="form-horizontal">
+			<form action="${root }/main" method="post" class="form-horizontal">
+				<input type="hidden" name="act" value="editinfo">
+			
 				<div class="row">
 					<div class="col-8 offset-4">
 						<h2>회원 정보 확인</h2>
@@ -113,43 +115,44 @@
 				<div class="form-group row">
 					<label class="col-form-label col-4">아이디</label>
 					<div class="col-8">
-						<p class="form-control"> ${id } </p>
+						<input type="text" class="form-control" value ="${id }" name="id" readonly>					
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">비밀번호</label>
 					<div class="col-8">
-						<p class="form-control">${password }</p>
+						<input type="password" class="form-control" value ="${password }" name="password" required="required">					
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">이름</label>
 					<div class="col-8">
-						<p class="form-control">${name }</p>
+						<input type="text" class="form-control" value ="${name }" name="name" required="required">					
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">주소</label>
 					<div class="col-8">
-						<p class="form-control">${address }</p>
+						<input type="text" class="form-control" value ="${address }" name="address" required="required">
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">전화번호</label>
 					<div class="col-8">
-						<p class="form-control">${tel }</p>
+						<input type="tel" class="form-control" value ="${tel }" name="tel" required="required">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="d-flex justify-content-center">
+						<button type="submit" name="button" value="update" class="btn btn-primary btn-lg mr-3">수정
+							&nbsp; &#10003;</button>
+						<button type="submit" name="button" value="delete" class="btn btn-primary btn-lg">탈퇴 
+							&nbsp; &#10003;</button>
 					</div>
 				</div>
 			</form>
-			<div class="form-group">
-				<div class="d-flex justify-content-center">
-					<button type="button" class="btn btn-primary btn-lg mr-3">확인
-						&nbsp; &#10003;</button>
-					<button type="submit" class="btn btn-primary btn-lg">수정
-						&nbsp; &#10003;</button>
-
-				</div>
-			</div>
+			
 		</div>
 	</section>
 	<!-- End Hero Section -->
