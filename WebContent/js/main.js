@@ -1,31 +1,31 @@
-// 화면에 대한 초기화 작업 및 로그아웃 화면
-function init(flag){
-	let befores = $(".before_login");
-	for(let before of befores){
-		// flag가 true로 평가되면 숨김(none), 아니면 표시(inline-block)
-		before.style.display = flag?"none":"inline-block"
-	}
-	let afters = $(".after_login");
-	for(let after of afters){
-		// flag가 true로 평가되면 보임, 아니면 숨김
-		after.style.display = flag?"inline-block":"none"
-	}
-}
-
-init();
-
-$("#login").on('click', function() {	
-	if($(id).val()=="ssafy" && $(pwd).val()=="1234"){
-		alert("로그인 성공");
-		init(true);
-	} else {
-		alert("로그인 실패");
-	}
-})
-	
-$("#logout").on('click', function() {
-	init();
-})
+//// 화면에 대한 초기화 작업 및 로그아웃 화면
+//function init(flag){
+//	let befores = $(".before_login");
+//	for(let before of befores){
+//		// flag가 true로 평가되면 숨김(none), 아니면 표시(inline-block)
+//		before.style.display = flag?"none":"inline-block"
+//	}
+//	let afters = $(".after_login");
+//	for(let after of afters){
+//		// flag가 true로 평가되면 보임, 아니면 숨김
+//		after.style.display = flag?"inline-block":"none"
+//	}
+//}
+//
+//init();
+//
+//$("#login").on('click', function() {	
+//	if($(id).val()=="ssafy" && $(pwd).val()=="1234"){
+//		alert("로그인 성공");
+//		init(true);
+//	} else {
+//		alert("로그인 실패");
+//	}
+//})
+//	
+//$("#logout").on('click', function() {
+//	init();
+//})
 
 // map 기능 
 
