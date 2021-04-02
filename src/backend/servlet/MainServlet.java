@@ -18,6 +18,7 @@ import backend.dto.House;
 import backend.dto.User;
 import backend.model.dao.AptInfoDaoImpl;
 import backend.model.service.AptInfoServiceImpl;
+
 import backend.model.service.DongCollectionServiceImpl;
 import backend.model.service.UserServiceImpl;
 
@@ -60,6 +61,15 @@ public class MainServlet extends HttpServlet {
 			} else if (act.equals("searchCategory")) { // 아파트 or 실거래별 검색
 				searchCategory(request, response);
 			}
+			} else if (act.equals("userinfo")) {
+				userinfo(request, response);
+			} else if (act.equals("editinfo")) {
+				String button = request.getParameter("button");
+				if(button.equals("update"))
+					updateinfo(request, response);
+				else 
+					deleteinfo(request, response);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -101,6 +111,46 @@ public class MainServlet extends HttpServlet {
 		// 3. View 출력
 		response.setContentType("application/json;charset=utf-8");
 		response.getWriter().append(json);
+	}
+
+
+	private void deleteinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+		String id = request.getParameter("id");
+		
+		UserServiceImpl.getUserService().delete(id);
+
+		logout(request, response);
+	}
+
+	private void updateinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String tel = request.getParameter("tel");
+
+		User user = new User(id, password, name, address, tel);
+		UserServiceImpl.getUserService().update(user);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("userinfo", user);
+
+		userinfo(request, response);
+	}
+
+	private void userinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("userinfo");
+		
+		request.setAttribute("id", user.getId());
+		request.setAttribute("password", user.getPassword());
+		request.setAttribute("name", user.getName());
+		request.setAttribute("address", user.getAddress());
+		request.setAttribute("tel", user.getTel());
+		
+		RequestDispatcher disp = request.getRequestDispatcher("/userInfo.jsp");
+		disp.forward(request, response);
 	}
 
 	private void signup(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
