@@ -65,20 +65,27 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="index.html"><span>Happy</span> House</a></h1>
+        <h1><a href="${root }/index.jsp"><span>Happy</span> House</a></h1>
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a href="#" class="before_login after_login">공지사항</a></li>
-          <li><a href="#" class="before_login after_login">오늘의 뉴스</a></li>
-          <li><a href="#" class="after_login">주변탐방</a></li>
-          <li><a href="#" class="after_login">관심 지역 설정</a></li>
-          <li><a href="#" class="after_login">관심 지역 둘러보기</a></li>
-          <li><a href="#" class="before_login">회원가입</a></li>
-          <li><a href="#" class="after_login">회원정보</a></li>
-          <li><a href="#" class="before_login" data-toggle="modal" data-target="#loginModal">로그인</a></li>
-          <li><a href="#" class="after_login" id="logout">로그아웃</a></li>
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">오늘의 뉴스</a></li>
+          
+          <c:if test="${empty userinfo }">
+	          <li><a href="${root }/main?act=gotosignup">회원가입</a></li>
+	          <li><a data-toggle="modal" data-target="#loginModal">로그인</a></li>
+          </c:if>
+          
+          <c:if test="${!empty userinfo }">
+	          <li><a href="#">주변탐방</a></li>
+	          <li><a href="#">관심 지역 설정</a></li>
+	          <li><a href="#">관심 지역 둘러보기</a></li>
+	          <li><a href="${root }/main?act=userinfo">회원정보</a></li>
+	          <li><a href="${root }/main?act=logout" id="logout">로그아웃</a></li>
+          </c:if>
+          
           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         </ul>
       </nav>
@@ -89,7 +96,9 @@
 	<div id="loginModal" class="modal fade">
 		<div class="modal-dialog modal-login">
 			<div class="modal-content">
-				<form action="" method="post">
+				<form action="${root }/main" method="post">
+					<input type="hidden" name="act" value="login">
+					
 					<div class="modal-header">
 						<h4 class="modal-title">Login</h4>
 						<button type="button" class="close" data-dismiss="modal"
@@ -97,20 +106,18 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>아이디</label> <input type="text" id="id"
-								class="form-control" required="required">
+							<label>아이디</label> 
+							<input type="text" name="id" class="form-control" required="required">
 						</div>
 						<div class="form-group">
 							<div class="clearfix">
 								<label>비밀번호</label> <a href="#" class="float-right text-muted"><small>비밀번호찾기</small></a>
 							</div>
-							<input type="password" id="pwd" class="form-control"
-								required="required">
+							<input type="password" name="password" class="form-control" required="required">
 						</div>
 					</div>
 					<div class="form-group justify-content-center d-flex">
-						<input type="button" class="btn btn-primary" id="login"
-							data-dismiss="modal" value="로그인">
+						<input type="submit" class="btn btn-primary" id="login" value="로그인">
 					</div>
 				</form>
 			</div>
@@ -118,5 +125,13 @@
 	</div>
 	<!-- ======= End loginModal ======= -->
 </body>
-	<script src="/js/ajax.js"></script>
+
+<script>
+	if("${msg}"){
+		alert("${msg}");
+	}
+</script>
+<c:remove var="msg"/>
+
+<script src="/js/ajax.js"></script>
 </html>
