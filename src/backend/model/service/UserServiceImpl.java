@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.login(id, password);
 	}
 
+	@Override
+	public void siguUp(User user) throws SQLException {
+		userDao.siguUp(user);
+	}
+
 }

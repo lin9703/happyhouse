@@ -90,7 +90,9 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="signup-form">
-	    <form action="" method="post" class="form-horizontal">
+	    <form action="${root }/main" method="post" class="form-horizontal">
+			<input type="hidden" name="act" value="signup">
+	    
 	      	<div class="row">
 	        	<div class="col-8 offset-4">
 					<h2>회원 가입</h2>
@@ -99,31 +101,31 @@
 	        <div class="form-group row">
 				<label class="col-form-label col-4">아이디</label>
 				<div class="col-8">
-	                <input type="text" class="form-control" name="userId" required="required">
+	                <input type="text" class="form-control" name="id" required="required">
 	            </div>        	
 	        </div>
 			<div class="form-group row">
 				<label class="col-form-label col-4">비밀번호</label>
 				<div class="col-8">
-	                <input type="password" class="form-control" name="userPw" placeholder="영문 숫자 포함 자리 이상" required="required">
+	                <input type="password" class="form-control" name="password" placeholder="영문 숫자 포함 5자리 이상" minlength="5" required="required">
 	            </div>        	
 	        </div>
 			<div class="form-group row">
 				<label class="col-form-label col-4">이름</label>
 				<div class="col-8">
-	                <input type="text" class="form-control" name="userName" placeholder="User Name" required="required">
+	                <input type="text" class="form-control" name="name" placeholder="User Name" required="required">
 	            </div>        	
 	        </div>
 			<div class="form-group row">
 				<label class="col-form-label col-4">주소</label>
 				<div class="col-8">
-	                <input type="email" class="form-control" name="UserAddress" placeholder="address" required="required">
+	                <input type="text" class="form-control" name="address" placeholder="address" required="required">
 	            </div>        	
 	        </div>
 	        <div class="form-group row">
 				<label class="col-form-label col-4">전화번호</label>
 				<div class="col-8">
-	                <input type="tel" class="form-control" name="userTel" placeholder="010-****-****" required="required">
+	                <input type="tel" class="form-control" name="tel" placeholder="010-****-****" required="required">
 	            </div>        	
 	        </div>
 	        

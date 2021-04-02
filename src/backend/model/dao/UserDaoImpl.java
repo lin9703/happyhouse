@@ -56,4 +56,28 @@ public class UserDaoImpl implements UserDao {
 		return info;
 	}
 
+	@Override
+	public void siguUp(User user) throws SQLException {		
+		String sql = "insert into user (id, password, name, address, tel) values (?, ?, ?, ?, ?)";
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = util.getConnection();
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user.getId());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, user.getAddress());
+			pstmt.setString(5, user.getTel());
+
+			pstmt.executeUpdate();
+		} finally {
+			util.close(null, pstmt, con);
+		}
+		
+	}
+
 }

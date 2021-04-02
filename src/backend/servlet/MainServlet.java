@@ -42,9 +42,27 @@ public class MainServlet extends HttpServlet {
 				login(request, response);
 			} else if (act.equals("logout")) {
 				logout(request, response);
-			}
+			} else if (act.equals("gotosignup")) {
+				response.sendRedirect(root + "/signup.jsp");
+			} else if (act.equals("signup")) {
+				signup(request, response);
+			} 
 		} catch (SQLException e) {
 		}
+	}
+
+	private void signup(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		String id = request.getParameter("id");
+		String password = request.getParameter("password");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
+		String tel = request.getParameter("tel");
+		
+		User user = new User(id, password, name, address, tel);
+		UserServiceImpl.getUserService().siguUp(user);
+		
+		String path = "/index.jsp";
+		response.sendRedirect(root + path);
 	}
 
 	protected void login(HttpServletRequest request, HttpServletResponse response)

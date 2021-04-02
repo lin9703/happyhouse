@@ -66,7 +66,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <h1><a href="index.html"><span>Happy</span> House</a></h1>
+        <h1><a href="${root }/index.jsp"><span>Happy</span> House</a></h1>
       </div>
 
       <nav id="nav-menu-container">
@@ -75,7 +75,7 @@
           <li><a href="#">오늘의 뉴스</a></li>
           
           <c:if test="${empty userinfo }">
-	          <li><a href="${root }/main?act=signup">회원가입</a></li>
+	          <li><a href="${root }/main?act=gotosignup">회원가입</a></li>
 	          <li><a data-toggle="modal" data-target="#loginModal">로그인</a></li>
           </c:if>
           
