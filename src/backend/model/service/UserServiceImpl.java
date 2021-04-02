@@ -32,4 +32,14 @@ public class UserServiceImpl implements UserService {
 		userDao.siguUp(user);
 	}
 
+	@Override
+	public void update(User user) throws SQLException {
+		userDao.update(user);
+	}
+
+	@Override
+	public void delete(String id) throws SQLException {
+		userDao.delete(id);
+	}
+
 }
