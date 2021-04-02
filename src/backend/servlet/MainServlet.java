@@ -61,7 +61,7 @@ public class MainServlet extends HttpServlet {
 			} else if (act.equals("searchCategory")) { // 아파트 or 실거래별 검색
 				searchCategory(request, response);
 			}
-			} else if (act.equals("userinfo")) {
+			else if (act.equals("userinfo")) {
 				userinfo(request, response);
 			} else if (act.equals("editinfo")) {
 				String button = request.getParameter("button");
