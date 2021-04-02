@@ -113,31 +113,31 @@
 				<div class="form-group row">
 					<label class="col-form-label col-4">아이디</label>
 					<div class="col-8">
-						<p class="form-control">ssafy</p>
+						<p class="form-control"> ${id } </p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">비밀번호</label>
 					<div class="col-8">
-						<p class="form-control">1234</p>
+						<p class="form-control">${password }</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">이름</label>
 					<div class="col-8">
-						<p class="form-control">홍길동</p>
+						<p class="form-control">${name }</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">주소</label>
 					<div class="col-8">
-						<p class="form-control">aaaa@naver.com</p>
+						<p class="form-control">${address }</p>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-4">전화번호</label>
 					<div class="col-8">
-						<p class="form-control">010-1111-2222</p>
+						<p class="form-control">${tel }</p>
 					</div>
 				</div>
 			</form>
