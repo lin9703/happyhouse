@@ -38,7 +38,7 @@ TODO: 요구사항 목록에서 완료 처리된 사항의 캡쳐 이미지를 �
 ![image](/uploads/9f274dc6bbc868dc96217ceab9ab746c/image.png)
 
 구현 기능: 회원관리페이지|회원정보 등록화면
-![image](/uploads/9f274dc6bbc868dc96217ceab9ab746c/image.png)
+![result07](/uploads/6d42a30796f8cf2a63b00a57ca9d9c2c/result07.png)
 
 구현 기능: 회원관리페이지|회원정보 수정화면
 ![image](/uploads/4b7802bf5dddffd973663707c89829e1/image.png)
