@@ -16,9 +16,25 @@
 	margin-left: 20px;
 	padding: 5px;
 }
+
+.apt-name {
+	font-weight: bold;
+	font-size: 22px;
+	color: #007bff;
+}
+
+.apt-head {
+	font-weight: bold;
+	font-size: 15px;
+	text-align: right;
+}
+
+.apt-right {
+	padding-left: 15px;
+}
 </style>
 </head>
-<%@ include file="/include/header.jsp" %>
+<%@ include file="/include/header.jsp"%>
 <body>
 
 	<section id="hero">
@@ -27,7 +43,7 @@
 			<div
 				class="sorting-filters text-center mb-20 d-flex justify-content-center">
 				<form class="form-inline" id="frm" action="${root }/main">
-					<!-- <input type="hidden" id="code"  name="code" value="code"/> -->
+					<input type="hidden" name="act" value="search" />
 					<div class="form-group md pr-3">
 						<select class="form-control" name="city" id="city">
 							<option value="all">도/광역시</option>
@@ -85,10 +101,33 @@
 						</select>
 					</div>
 					<div>
-						<button type="button" id="search">검색</button>
+						<button class="btn btn-primary"
+							style="margin-top: 0; min-width: 80px" type="button" id="search">검색</button>
 					</div>
 				</form>
 			</div>
+			<br>
+			<!-- Start 아파트별, 실거래가별 검색  -->
+			<div class="form-group md pr-3">
+				<form class="form-inline" action="" method="get">
+					<input type="hidden" name="act" value="searchCategory">
+					<div class="form-group md-1 pr-3">
+						<select class="form-control" name="searchTitle" id="searchTitle">
+							<option value="apt">아파트</option>
+							<option value="deal">실거래</option>
+						</select>
+					</div>
+					<div class="form-group md-1 pr-3">
+						<input class="form-control" type="text" name="searchText" id="searchText"
+							placeholder="검색할 단어를 입력하세요">
+					</div>
+
+					<button class="btn btn-primary"
+						style="margin-top: 0; min-width: 80px" type="button" id="search2">검색</button>
+
+				</form>
+			</div>
+			<!-- End 아파트별, 실거래가별 검색  -->
 			<br>
 			<div class="row">
 				<div class="col-md-4">
@@ -96,16 +135,18 @@
 						style="background-color: #b3e6cc; font-size: 15pt; padding: 10px; border-radius: 10px; box-shadow: 0 8px 6px -6px black;">거래
 						정보</h3>
 					<hr>
-					<div id="deal-list" style="height: 500px; overflow: scroll;"></div>
+					<div style="height: 500px; overflow: scroll;">
+						<div id="deal-list" style="text-align: left;"></div>
+					</div>
 				</div>
 				<div class="col-md-8" id="map"
 					style="box-shadow: 0 8px 6px -6px black;"></div>
 			</div>
 		</div>
-	<h1>============</h1>
+
 	</section>
 	<!-- End Hero Section -->
-	<%@ include file="/include/footer.jsp" %>
+	<%@ include file="/include/footer.jsp"%>
 </body>
-	<%@ include file="/include/vendorjs.jsp" %>
+<%@ include file="/include/vendorjs.jsp"%>
 </html>
