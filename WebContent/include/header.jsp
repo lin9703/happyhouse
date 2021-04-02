@@ -15,7 +15,6 @@
   <!-- ajax -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  
   <!-- Favicons -->
   <link href="" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -134,4 +133,5 @@
 </script>
 <c:remove var="msg"/>
 
+<script src="/js/ajax.js"></script>
 </html>
