@@ -7,5 +7,5 @@ import backend.dto.Shop;
 
 public interface ShopService {
 	List<Shop> getShopList(String gu, String dong) throws SQLException;
-	
+
 }
