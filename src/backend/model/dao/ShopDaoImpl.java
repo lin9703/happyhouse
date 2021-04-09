@@ -48,8 +48,8 @@ public class ShopDaoImpl implements ShopDao {
 			
 			while(rset.next()) {
 				String shopName = rset.getString("shopname");
-				String lng = rset.getString("lng");
-				String lat = rset.getString("lat");
+				String lng = rset.getString("lng").replaceAll("\"", "");
+				String lat = rset.getString("lat").replaceAll("\"", "");
 				
 				shops.add(new Shop(shopName, gu, dong, lng, lat));
 			}

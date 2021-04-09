@@ -59,5 +59,10 @@ public class Shop {
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
+
+	@Override
+	public String toString() {
+		return "Shop [shopName=" + shopName + ", gu=" + gu + ", dong=" + dong + ", lng=" + lng + ", lat=" + lat + "]";
+	}
 	
 }

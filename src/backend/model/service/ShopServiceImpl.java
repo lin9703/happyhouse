@@ -15,7 +15,7 @@ public class ShopServiceImpl implements ShopService {
 	private ShopServiceImpl() {
 	}
 	
-	public static ShopService getShopDao() {
+	public static ShopService getShopService() {
 		if(impl == null) {
 			impl = new ShopServiceImpl();
 		}
