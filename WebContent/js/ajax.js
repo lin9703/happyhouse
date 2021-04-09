@@ -72,13 +72,11 @@ $("#mapSearch").on('click', function() {
 		queryString +=`&category=${checkArray[i]}`;
 	}
 	
-	// console.log(checkArray);
-	// console.log(`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`);
+	 console.log(checkArray);
+	 console.log(`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`);
 	$.ajax({
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`,
 		success:function(data){
-			console.log(data);
-			
 			initMap(data);
 		}
 	}); 

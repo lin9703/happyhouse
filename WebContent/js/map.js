@@ -2,7 +2,7 @@
 function initMap(data) {
 	if(data != null){
 		console.log("initmap")
-		console.log(data[0]['gu']);
+		console.log(data);
 	}
   // The location of 적선동(init) or 조회하려는 법정동
   // 광화문 입구 : { lat: 37.57571, lng: 126.97672 }
