@@ -79,9 +79,8 @@
           </c:if>
           
           <c:if test="${!empty userinfo }">
-	          <li><a href="#">주변탐방</a></li>
-	          <li><a href="#">관심 지역 설정</a></li>
-	          <li><a href="#">관심 지역 둘러보기</a></li>
+	          <li><a href="${root }/main?act=detail">주택 매물 확인</a></li>
+	          <li><a href="${root }/main?act=around">관심 지역 둘러보기</a></li>
 	          <li><a href="${root }/main?act=userinfo">회원정보</a></li>
 	          <li><a href="${root }/main?act=logout" id="logout">로그아웃</a></li>
           </c:if>
