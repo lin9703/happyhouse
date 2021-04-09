@@ -85,6 +85,7 @@ $("#mapSearch").on('click', function() {
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`,
 		success:function(data){
 			initMap(data);
+			console.log(data);
 			$("#deal-list").append(
 			  `<h3> ${dong} / ${gu}</h3>
 		       <div style="{text-align : right; margin:auto;}"> 
