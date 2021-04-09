@@ -9,7 +9,7 @@ import backend.model.dao.UserDaoImpl;
 public class UserServiceImpl implements UserService {
 
 	private static UserService impl = null;
-	UserDao userDao = UserDaoImpl.getUserDao();
+	private UserDao userDao = UserDaoImpl.getUserDao();
 
 	public static UserService getUserService() {
 		if (impl == null) {

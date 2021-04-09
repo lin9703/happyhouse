@@ -1,25 +1,23 @@
 package backend.dto;
 
-public class Commercial {
+public class Shop {
 	private String shopName;
-	private String city;
 	private String gu;
 	private String dong;
-	private String lng;
-	private String lat;
+	private double lng;
+	private double lat;
 	
-	public Commercial() {
+	public Shop() {
 		super();
 	}
 
-	public Commercial(String shopName, String city, String gu, String dong, String lng, String lat) {
+	public Shop(String shopName, String gu, String dong, String lng, String lat) {
 		super();
 		this.shopName = shopName;
-		this.city = city;
 		this.gu = gu;
 		this.dong = dong;
-		this.lng = lng;
-		this.lat = lat;
+		this.lng = Double.parseDouble(lng);
+		this.lat = Double.parseDouble(lat);
 	}
 
 	public String getShopName() {
@@ -28,14 +26,6 @@ public class Commercial {
 
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
 	}
 
 	public String getGu() {
@@ -54,22 +44,25 @@ public class Commercial {
 		this.dong = dong;
 	}
 
-	public String getLng() {
+	public double getLng() {
 		return lng;
 	}
 
-	public void setLng(String lng) {
+	public void setLng(double lng) {
 		this.lng = lng;
 	}
 
-	public String getLat() {
+	public double getLat() {
 		return lat;
 	}
 
-	public void setLat(String lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Shop [shopName=" + shopName + ", gu=" + gu + ", dong=" + dong + ", lng=" + lng + ", lat=" + lat + "]";
+	}
 	
 }

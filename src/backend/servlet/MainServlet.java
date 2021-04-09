@@ -15,11 +15,13 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import backend.dto.House;
+import backend.dto.Shop;
 import backend.dto.User;
 import backend.model.dao.AptInfoDaoImpl;
 import backend.model.service.AptInfoServiceImpl;
 
 import backend.model.service.DongCollectionServiceImpl;
+import backend.model.service.ShopServiceImpl;
 import backend.model.service.UserServiceImpl;
 
 /**
@@ -73,10 +75,29 @@ public class MainServlet extends HttpServlet {
 				response.sendRedirect(root + "/detail.jsp");
 			} else if(act.equals("around")) {	// 관심 지역 목록 페이지 (around.jsp)
 				response.sendRedirect(root + "/around.jsp");
-			}
+			} else if (act.equals("searchshop")) { // 기본 검색
+				searchAroundShop(request, response);
+			} 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void searchAroundShop(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+		// 1. 파라미터 확인
+		String gu = request.getParameter("gu");
+		String dong = request.getParameter("dong");
+
+		// 2. 비즈니스 로직
+		List<Shop> list = ShopServiceImpl.getShopService().getShopList(gu, dong);
+		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
+				
+		Gson gson = new Gson();
+		String json = gson.toJson(list);
+
+		// 3. View 출력
+		response.setContentType("application/json;charset=utf-8");
+		response.getWriter().append(json);
 	}
 
 	// 기본 검색 (행정구역 기준)
