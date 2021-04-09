@@ -61,5 +61,8 @@ TODO: 요구사항 목록에서 완료 처리된 사항의 캡쳐 이미지를 �
 구현 기능: 실거래가 검색,결과 페이지|실거래가별검색화면
 ![image](/uploads/7b7a0b2370e2ee8353e8c7285bb7415d/image.png)
 
-구현 기능: 관심지역 데이터 관리
+구현 기능: 관심지역 데이터 관리|동별 추가
 ![image](/uploads/4bf21d59ec6cc63532a8d229fae223b2/image.png)
+
+구현 기능: 관심지역 데이터 관리|카테고리별 검색 
+![image](/uploads/5f535f0b137407fcf26aa71b892eb17d/image.png)
