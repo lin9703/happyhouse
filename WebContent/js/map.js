@@ -45,7 +45,8 @@ function initMap(data) {
 	      
 	      marker.addListener("click", ()=> {
 	    	  infoWindow.close();
-	    	  infoWindow.setContent(marker.getTitle());
+	    	  infoWindow.setContent(`[${data['shopList'][i]['codeName']}]
+	    	  ${marker.getTitle()}`);
 	    	  infoWindow.open(marker.getMap(), marker);
 	    	  map.setZoom(15);
 	    	  map.setCenter(marker.getPosition());
