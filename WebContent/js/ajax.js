@@ -19,17 +19,17 @@ $("#gu").on('change', function() {
 $("#search").on('click', function() {
 	const dong = $("#dong").val();
 	$.ajax({
-		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=search&dong=${dong}`,
+		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&dong=${dong}&gu=$gu}`,
 		success:function(data){
 			$("#deal-list").empty();
-			$.each(data, function(idx, item) {
-				$("#deal-list").append(`<table>
-				<tr class="apt-name"><td colspan="2">${item.aptName}</td></tr>
-				<tr><td class="apt-head">거래 금액: </td><td class="apt-right">${item.dealAmount}</td></tr>
-				<tr><td class="apt-head">면적: </td><td class="apt-right">${item.area}</td></tr>
-				<tr><td class="apt-head">거래 날짜:</td><td class="apt-right">${item.dealYear}-${item.dealMonth}-${item.dealday}</td></tr>
-				</table><hr>`);
-			});
+//			$.each(data, function(idx, item) {
+//				$("#deal-list").append(`<table>
+//				<tr class="apt-name"><td colspan="2">${item.aptName}</td></tr>
+//				<tr><td class="apt-head">거래 금액: </td><td class="apt-right">${item.dealAmount}</td></tr>
+//				<tr><td class="apt-head">면적: </td><td class="apt-right">${item.area}</td></tr>
+//				<tr><td class="apt-head">거래 날짜:</td><td class="apt-right">${item.dealYear}-${item.dealMonth}-${item.dealday}</td></tr>
+//				</table><hr>`);
+//			});
 		}
 });})
  
@@ -61,13 +61,11 @@ $("#mapSearch").on('click', function() {
 	console.log(gu, dong);
 	
 	$.ajax({
-		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=gu&gu=${gu}`,
+		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}`,
 		success:function(data){
 			$("#deal-list2").empty();
 			console.log(data);
-			$.each(data, function(idx, item) {
-				$("#deal-list2").append("<p>"+item+"</p>");
-			});
+			
 		}
 	}); 
 });
