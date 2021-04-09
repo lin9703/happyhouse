@@ -69,6 +69,10 @@ public class MainServlet extends HttpServlet {
 					updateinfo(request, response);
 				else 
 					deleteinfo(request, response);
+			} else if(act.equals("detail")) {	// 주택 시세 확인 페이지 (detail.jsp)
+				response.sendRedirect(root + "/detail.jsp");
+			} else if(act.equals("around")) {	// 관심 지역 목록 페이지 (around.jsp)
+				response.sendRedirect(root + "/around.jsp");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,7 +86,7 @@ public class MainServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String gugun = request.getParameter("gu");
 		String dong = request.getParameter("dong");
-
+		
 		// 2. 비즈니스 로직
 		List<House> list = AptInfoServiceImpl.getAptInfoServiceImpl().getSearchList(dong);
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
