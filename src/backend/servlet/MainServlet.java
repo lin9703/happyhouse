@@ -94,8 +94,8 @@ public class MainServlet extends HttpServlet {
 		
 		// 2. 비즈니스 로직
 		ShopInfoService service = new ShopInfoServiceImpl(gu, dong);
-		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
 
+		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
 		Gson gson = new Gson();
 		String json = gson.toJson(service);
 		System.out.println(json);
