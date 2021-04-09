@@ -135,14 +135,19 @@
 				<div class="col-md-4">
 					<h3
 						style="background-color: #b3e6cc; font-size: 15pt; padding: 10px; border-radius: 10px; box-shadow: 0 8px 6px -6px black;">관심 지역
-						목록2</h3>
+						목록</h3>
 					<hr>
+					<div>
+						<label><input type="checkbox" name="category" value="음식">음식</label>
+						<label><input type="checkbox" name="category" value="생활서비스">생활</label>
+						<label><input type="checkbox" name="category" value="학문/교육">교육</label>
+					</div>
 					<div style="height: 500px; overflow: scroll;">
-						<div id="deal-list2" style="text-align: left;"></div>
+						<div id="deal-list" style="text-align: left;"></div>
 					</div>
 				</div>
 				<div class="col-md-8" id="map"
-					style="box-shadow: 0 8px 6px -6px black;"></div>
+					style="box-shadow: 0 8px 6px -6px black; width:600px;"></div>
 			</div>
 		</div>
 

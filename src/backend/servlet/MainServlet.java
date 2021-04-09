@@ -90,7 +90,8 @@ public class MainServlet extends HttpServlet {
 		// 1. 파라미터 확인
 		String gu = request.getParameter("gu");
 		String dong = request.getParameter("dong");
-
+		String[] values = request.getParameterValues("category"); // category 값
+		
 		// 2. 비즈니스 로직
 		ShopInfoService service = new ShopInfoServiceImpl(gu, dong);
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
