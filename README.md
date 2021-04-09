@@ -68,4 +68,4 @@ TODO: 요구사항 목록에서 완료 처리된 사항의 캡쳐 이미지를 �
 ![image](/uploads/5f535f0b137407fcf26aa71b892eb17d/image.png)
 
 <br> DB: Select 문 출력 결과
-![image](/uploads/bfeb8502501c481bb98e9dcc6e29a865/image.png)
+<br>![image](/uploads/bfeb8502501c481bb98e9dcc6e29a865/image.png)
