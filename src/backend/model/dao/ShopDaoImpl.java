@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import backend.dto.Shop;
-import backend.dto.User;
 import backend.util.DBUtil;
 
 public class ShopDaoImpl implements ShopDao {
@@ -30,7 +28,6 @@ public class ShopDaoImpl implements ShopDao {
 	@Override
 	public List<Shop> getShopList(String gu, String dong) throws SQLException {
 		List<Shop> shops = new ArrayList<>();
-
 		String sql = "select * from commercialarea where gu=? and dong=?";
 
 		Connection con = null;

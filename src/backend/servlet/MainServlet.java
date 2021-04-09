@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import backend.dto.DongLocation;
 import backend.dto.House;
 import backend.dto.Shop;
 import backend.dto.User;
@@ -21,7 +22,8 @@ import backend.model.dao.AptInfoDaoImpl;
 import backend.model.service.AptInfoServiceImpl;
 
 import backend.model.service.DongCollectionServiceImpl;
-import backend.model.service.ShopServiceImpl;
+import backend.model.service.ShopInfoService;
+import backend.model.service.ShopInfoServiceImpl;
 import backend.model.service.UserServiceImpl;
 
 /**
@@ -50,6 +52,7 @@ public class MainServlet extends HttpServlet {
 				response.sendRedirect(root + "/index.jsp");
 			} else if (act.equals("login")) { // 로그인
 				login(request, response);
+				searchAroundShop(request, response);
 			} else if (act.equals("logout")) { // 로그아웃
 				logout(request, response);
 			} else if (act.equals("gotosignup")) { // 회원가입 페이지로 이동
@@ -89,11 +92,12 @@ public class MainServlet extends HttpServlet {
 		String dong = request.getParameter("dong");
 
 		// 2. 비즈니스 로직
-		List<Shop> list = ShopServiceImpl.getShopService().getShopList(gu, dong);
+		ShopInfoService service = new ShopInfoServiceImpl(gu, dong);
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
 
 		Gson gson = new Gson();
-		String json = gson.toJson(list);
+		String json = gson.toJson(service);
+		System.out.println(json);
 
 		// 3. View 출력
 		response.setContentType("application/json;charset=utf-8");
