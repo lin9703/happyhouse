@@ -98,7 +98,7 @@ public class MainServlet extends HttpServlet {
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
 		Gson gson = new Gson();
 		String json = gson.toJson(service);
-		System.out.println(json);
+		// System.out.println(json);
 
 		// 3. View 출력
 		response.setContentType("application/json;charset=utf-8");
