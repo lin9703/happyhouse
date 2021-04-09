@@ -15,9 +15,9 @@ public class ShopInfoServiceImpl implements ShopInfoService {
 	private DongLocation dongLoc;
 	private List<Shop> shopList;
 	
-	public ShopInfoServiceImpl(String gu, String dong) throws SQLException {
+	public ShopInfoServiceImpl(String gu, String dong, String[] values) throws SQLException {
 		setDongLocation(dong);
-		setShopList(gu, dong);
+		setShopList(gu, dong, values);
 	}
 	
 	@Override
@@ -26,8 +26,8 @@ public class ShopInfoServiceImpl implements ShopInfoService {
 	}
 
 	@Override
-	public void setShopList(String gu, String dong) throws SQLException {
-		shopList = ShopDaoImpl.getShopImpl().getShopList(gu, dong);
+	public void setShopList(String gu, String dong, String[] values) throws SQLException {
+		shopList = ShopDaoImpl.getShopImpl().getShopList(gu, dong, values);
 	}
 
 }

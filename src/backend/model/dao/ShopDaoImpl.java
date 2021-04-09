@@ -26,9 +26,19 @@ public class ShopDaoImpl implements ShopDao {
 	}
 
 	@Override
-	public List<Shop> getShopList(String gu, String dong) throws SQLException {
+	public List<Shop> getShopList(String gu, String dong, String[] values) throws SQLException {
 		List<Shop> shops = new ArrayList<>();
-		String sql = "select * from commercialarea where gu=? and dong=?";
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from commercialarea where gu=? and dong=?");
+		
+		if(values != null && values.length != 0) {
+			sql.append(" and codename1 in (");
+			for(int i=0; i<values.length; i++) {
+				sql.append("'").append(values[i]).append("',");
+			}
+			sql.delete(sql.length()-1, sql.length());
+			sql.append(")");
+		}
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -37,7 +47,7 @@ public class ShopDaoImpl implements ShopDao {
 		try {
 			con = util.getConnection();
 
-			pstmt = con.prepareStatement(sql);
+			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, gu);
 			pstmt.setString(2, dong);
 
@@ -47,8 +57,9 @@ public class ShopDaoImpl implements ShopDao {
 				String shopName = rset.getString("shopname");
 				String lng = rset.getString("lng").replaceAll("\"", "");
 				String lat = rset.getString("lat").replaceAll("\"", "");
+				String codeName = rset.getString("codename1");
 
-				shops.add(new Shop(shopName, gu, dong, lng, lat));
+				shops.add(new Shop(shopName, gu, dong, lng, lat, codeName));
 			}
 		} finally {
 			util.close(rset, pstmt, con);
