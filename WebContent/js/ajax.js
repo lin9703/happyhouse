@@ -1,7 +1,7 @@
 /** ************* 아파트 실거래가 정보 가져오기 *************** */
 $("#gu").on('change', function() {
 	const gu = $(this).val();
-	console.log(`gu = ${gu}다`);
+	// console.log(`gu = ${gu}다`);
 	$.ajax({
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=gu&gu=${gu}`,
 		success:function(data){
@@ -35,8 +35,8 @@ $("#search").on('click', function() {
  
 /*************** 아파트, 실거래가별(아래) 검색 데이터 가져오기 ****************/
 $("#search2").on('click', function() {
-	const searchTitle = $("#searchTitle").val();
-	const searchText = $("#searchText").val();
+	// const searchTitle = $("#searchTitle").val();
+	// const searchText = $("#searchText").val();
 	console.log(searchTitle, searchText);
 	$.ajax({
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchCategory&searchTitle=${searchTitle}&searchText=${searchText}`,
@@ -57,15 +57,29 @@ $("#search2").on('click', function() {
 $("#mapSearch").on('click', function() {
 	const gu = $("#gu").val();
 	const dong = $("#dong").val();
-	console.log("hi");
-	console.log(gu, dong);
+	const checkArray = new Array();
 	
+	// console.log($("input[type='checkbox']:checked").val());
+	// console.log("mapSearch");
+	// console.log(gu, dong);
+	
+	$('input:checkbox[name=category]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+		checkArray.push(this.value);
+    });
+	
+	let queryString = "";
+	for(let i = 0; i<checkArray.length; i++){
+		queryString +=`&category=${checkArray[i]}`;
+	}
+	
+	// console.log(checkArray);
+	// console.log(`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`);
 	$.ajax({
-		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}`,
+		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`,
 		success:function(data){
-			$("#deal-list2").empty();
 			console.log(data);
 			
+			initMap(data);
 		}
 	}); 
 });
