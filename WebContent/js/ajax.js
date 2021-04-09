@@ -1,9 +1,12 @@
 /** ************* 아파트 실거래가 정보 가져오기 *************** */
 $("#gu").on('change', function() {
 	const gu = $(this).val();
+	console.log(`gu = ${gu}다`);
 	$.ajax({
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=gu&gu=${gu}`,
 		success:function(data){
+			console.log(data);
+			
 			$("#dong").empty();
 			$.each(data, function(idx, item) {
 				$("#dong").append("<option value='"+item+"'>"+item);
@@ -30,7 +33,7 @@ $("#search").on('click', function() {
 		}
 });})
  
-/** ************* 아파트, 실거래가별(아래) 검색 데이터 가져오기 *************** */
+/*************** 아파트, 실거래가별(아래) 검색 데이터 가져오기 ****************/
 $("#search2").on('click', function() {
 	const searchTitle = $("#searchTitle").val();
 	const searchText = $("#searchText").val();
@@ -49,3 +52,22 @@ $("#search2").on('click', function() {
 			});
 		}
 });})
+
+/*************** 주변 관심 지역 : Map Data 가져오기 ****************/
+$("#mapSearch").on('click', function() {
+	const gu = $("#gu").val();
+	const dong = $("#dong").val();
+	console.log("hi");
+	console.log(gu, dong);
+	
+	$.ajax({
+		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=gu&gu=${gu}`,
+		success:function(data){
+			$("#deal-list2").empty();
+			console.log(data);
+			$.each(data, function(idx, item) {
+				$("#deal-list2").append("<p>"+item+"</p>");
+			});
+		}
+	}); 
+});
