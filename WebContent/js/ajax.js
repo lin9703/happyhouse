@@ -1,11 +1,13 @@
 /** ************* 아파트 실거래가 정보 가져오기 *************** */
 $("#gu").on('change', function() {
 	const gu = $(this).val();
+	
 	// console.log(`gu = ${gu}다`);
+	
 	$.ajax({
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=gu&gu=${gu}`,
 		success:function(data){
-			console.log(data);
+			// console.log(data);
 			
 			$("#dong").empty();
 			$.each(data, function(idx, item) {
@@ -22,18 +24,21 @@ $("#search").on('click', function() {
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&dong=${dong}&gu=$gu}`,
 		success:function(data){
 			$("#deal-list").empty();
-//			$.each(data, function(idx, item) {
-//				$("#deal-list").append(`<table>
-//				<tr class="apt-name"><td colspan="2">${item.aptName}</td></tr>
-//				<tr><td class="apt-head">거래 금액: </td><td class="apt-right">${item.dealAmount}</td></tr>
-//				<tr><td class="apt-head">면적: </td><td class="apt-right">${item.area}</td></tr>
-//				<tr><td class="apt-head">거래 날짜:</td><td class="apt-right">${item.dealYear}-${item.dealMonth}-${item.dealday}</td></tr>
-//				</table><hr>`);
-//			});
+// $.each(data, function(idx, item) {
+// $("#deal-list").append(`<table>
+// <tr class="apt-name"><td colspan="2">${item.aptName}</td></tr>
+// <tr><td class="apt-head">거래 금액: </td><td
+// class="apt-right">${item.dealAmount}</td></tr>
+// <tr><td class="apt-head">면적: </td><td
+// class="apt-right">${item.area}</td></tr>
+// <tr><td class="apt-head">거래 날짜:</td><td
+// class="apt-right">${item.dealYear}-${item.dealMonth}-${item.dealday}</td></tr>
+// </table><hr>`);
+// });
 		}
 });})
  
-/*************** 아파트, 실거래가별(아래) 검색 데이터 가져오기 ****************/
+/** ************* 아파트, 실거래가별(아래) 검색 데이터 가져오기 *************** */
 $("#search2").on('click', function() {
 	// const searchTitle = $("#searchTitle").val();
 	// const searchText = $("#searchText").val();
@@ -53,7 +58,7 @@ $("#search2").on('click', function() {
 		}
 });})
 
-/*************** 주변 관심 지역 : Map Data 가져오기 ****************/
+/** ************* 주변 관심 지역 : Map Data 가져오기 *************** */
 $("#mapSearch").on('click', function() {
 	const gu = $("#gu").val();
 	const dong = $("#dong").val();
@@ -63,7 +68,9 @@ $("#mapSearch").on('click', function() {
 	// console.log("mapSearch");
 	// console.log(gu, dong);
 	
-	$('input:checkbox[name=category]:checked').each(function() { // 체크된 체크박스의 value 값을 가지고 온다.
+	$('input:checkbox[name=category]:checked').each(function() { // 체크된 체크박스의
+																	// value 값을
+																	// 가지고 온다.
 		checkArray.push(this.value);
     });
 	
@@ -72,12 +79,19 @@ $("#mapSearch").on('click', function() {
 		queryString +=`&category=${checkArray[i]}`;
 	}
 	
-	 console.log(checkArray);
-	 console.log(`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`);
+	// console.log(checkArray);
+	// console.log(`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`);
 	$.ajax({
 		url:`http://localhost:8080/HappyHouse_BackEnd/main?act=searchshop&gu=${gu}&dong=${dong}${queryString}`,
 		success:function(data){
 			initMap(data);
+			$("#deal-list").append(
+			  `<h3> ${dong} / ${gu}</h3>
+		       <div style="{text-align : right; margin:auto;}"> 
+		       <a href="#">메인으로 변경</a> <a href="#">삭제</a>
+			   <hr>
+			   </div>`		
+			);
 		}
 	}); 
 });

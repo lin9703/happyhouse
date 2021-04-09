@@ -138,9 +138,9 @@
 						목록</h3>
 					<hr>
 					<div>
-						<label><input type="checkbox" name="category" value="음식">음식</label>
-						<label><input type="checkbox" name="category" value="생활서비스">생활</label>
-						<label><input type="checkbox" name="category" value="학문/교육">교육</label>
+						<label><input type="checkbox" name="category" value="음식">&nbsp;음식</label>
+						<label><input type="checkbox" name="category" value="생활서비스">&nbsp;생활</label>
+						<label><input type="checkbox" name="category" value="학문/교육">&nbsp;교육</label>
 					</div>
 					<div style="height: 500px; overflow: scroll;">
 						<div id="deal-list" style="text-align: left;"></div>
