@@ -12,7 +12,7 @@ public class UserDaoImpl implements UserDao {
 
 	private static UserDao impl = null;
 	private DBUtil util = DBUtil.getUtil();
-	
+
 	public static UserDao getUserDao() {
 		if (impl == null) {
 			impl = new UserDaoImpl();
@@ -27,23 +27,23 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public User login(String id, String password) throws SQLException {
 		User info = null;
-		
+
 		String sql = "select * from user where id=? and password=?";
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+
 		try {
 			con = util.getConnection();
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			pstmt.setString(2, password);
-			
+
 			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
+
+			if (rset.next()) {
 				String name = rset.getString("name");
 				String address = rset.getString("address");
 				String tel = rset.getString("tel");
@@ -52,20 +52,20 @@ public class UserDaoImpl implements UserDao {
 		} finally {
 			util.close(rset, pstmt, con);
 		}
-		
+
 		return info;
 	}
 
 	@Override
-	public void siguUp(User user) throws SQLException {		
+	public void siguUp(User user) throws SQLException {
 		String sql = "insert into user (id, password, name, address, tel) values (?, ?, ?, ?, ?)";
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = util.getConnection();
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPassword());
@@ -77,19 +77,19 @@ public class UserDaoImpl implements UserDao {
 		} finally {
 			util.close(null, pstmt, con);
 		}
-		
+
 	}
 
 	@Override
 	public void update(User user) throws SQLException {
 		String sql = "update user set password=?, name=?, address=?, tel=? where id=?";
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = util.getConnection();
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user.getPassword());
 			pstmt.setString(2, user.getName());
@@ -105,14 +105,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void delete(String id) throws SQLException {
-String sql = "delete from user where id=?";
-		
+		String sql = "delete from user where id=?";
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = util.getConnection();
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 

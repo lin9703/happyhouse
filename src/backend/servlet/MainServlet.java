@@ -62,28 +62,28 @@ public class MainServlet extends HttpServlet {
 				search(request, response);
 			} else if (act.equals("searchCategory")) { // 아파트 or 실거래별 검색
 				searchCategory(request, response);
-			}
-			else if (act.equals("userinfo")) {
+			} else if (act.equals("userinfo")) {
 				userinfo(request, response);
 			} else if (act.equals("editinfo")) {
 				String button = request.getParameter("button");
-				if(button.equals("update"))
+				if (button.equals("update"))
 					updateinfo(request, response);
-				else 
+				else
 					deleteinfo(request, response);
-			} else if(act.equals("detail")) {	// 주택 시세 확인 페이지 (detail.jsp)
+			} else if (act.equals("detail")) { // 주택 시세 확인 페이지 (detail.jsp)
 				response.sendRedirect(root + "/detail.jsp");
-			} else if(act.equals("around")) {	// 관심 지역 목록 페이지 (around.jsp)
+			} else if (act.equals("around")) { // 관심 지역 목록 페이지 (around.jsp)
 				response.sendRedirect(root + "/around.jsp");
 			} else if (act.equals("searchshop")) { // 기본 검색
 				searchAroundShop(request, response);
-			} 
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void searchAroundShop(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
+	private void searchAroundShop(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException {
 		// 1. 파라미터 확인
 		String gu = request.getParameter("gu");
 		String dong = request.getParameter("dong");
@@ -91,7 +91,7 @@ public class MainServlet extends HttpServlet {
 		// 2. 비즈니스 로직
 		List<Shop> list = ShopServiceImpl.getShopService().getShopList(gu, dong);
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
-				
+
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
 
@@ -107,7 +107,7 @@ public class MainServlet extends HttpServlet {
 		String city = request.getParameter("city");
 		String gugun = request.getParameter("gu");
 		String dong = request.getParameter("dong");
-		
+
 		// 2. 비즈니스 로직
 		List<House> list = AptInfoServiceImpl.getAptInfoServiceImpl().getSearchList(dong);
 		// 참고!!. Json 문자열 <--> 자바 객체 (Gson 은 google에서 제공하는 jar 파일을 첨부해야함)
@@ -138,16 +138,17 @@ public class MainServlet extends HttpServlet {
 		response.getWriter().append(json);
 	}
 
-
-	private void deleteinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	private void deleteinfo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
 		String id = request.getParameter("id");
-		
+
 		UserServiceImpl.getUserService().delete(id);
 
 		logout(request, response);
 	}
 
-	private void updateinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+	private void updateinfo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
 
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
@@ -157,23 +158,24 @@ public class MainServlet extends HttpServlet {
 
 		User user = new User(id, password, name, address, tel);
 		UserServiceImpl.getUserService().update(user);
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("userinfo", user);
 
 		userinfo(request, response);
 	}
 
-	private void userinfo(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void userinfo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("userinfo");
-		
+
 		request.setAttribute("id", user.getId());
 		request.setAttribute("password", user.getPassword());
 		request.setAttribute("name", user.getName());
 		request.setAttribute("address", user.getAddress());
 		request.setAttribute("tel", user.getTel());
-		
+
 		RequestDispatcher disp = request.getRequestDispatcher("/userInfo.jsp");
 		disp.forward(request, response);
 	}

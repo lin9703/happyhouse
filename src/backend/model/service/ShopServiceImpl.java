@@ -8,21 +8,21 @@ import backend.model.dao.ShopDao;
 import backend.model.dao.ShopDaoImpl;
 
 public class ShopServiceImpl implements ShopService {
-	
+
 	private static ShopService impl = null;
 	private ShopDao shopDao = ShopDaoImpl.getShopImpl();
-	
+
 	private ShopServiceImpl() {
 	}
-	
+
 	public static ShopService getShopService() {
-		if(impl == null) {
+		if (impl == null) {
 			impl = new ShopServiceImpl();
 		}
-		
+
 		return impl;
 	}
-	
+
 	@Override
 	public List<Shop> getShopList(String gu, String dong) throws SQLException {
 		return shopDao.getShopList(gu, dong);

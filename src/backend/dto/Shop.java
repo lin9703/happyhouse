@@ -6,7 +6,7 @@ public class Shop {
 	private String dong;
 	private double lng;
 	private double lat;
-	
+
 	public Shop() {
 		super();
 	}
@@ -64,5 +64,5 @@ public class Shop {
 	public String toString() {
 		return "Shop [shopName=" + shopName + ", gu=" + gu + ", dong=" + dong + ", lng=" + lng + ", lat=" + lat + "]";
 	}
-	
+
 }
