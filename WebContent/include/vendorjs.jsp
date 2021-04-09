@@ -13,10 +13,10 @@
 	<script src="assets/vendor/aos/aos.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="assets/js/main.js"></script>
+	<script src="${root}/assets/js/main.js"></script>
 	<!--  ajax 파일  -->
-	<script src="js/ajax.js"></script>
-	<script src="js/main.js"></script>
+	<script src="${root}/js/ajax.js"></script>
+	<script src="${root}/js/map.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAnF5Ody8kFckur_X9VFJc8jWS5MYwBxE&callback=initMap&libraries=&v=weekly"
 		async></script>

@@ -12,7 +12,7 @@
 <meta content="" name="keywords">
 
 <style>
-#search {
+#mapSearch {
 	margin-left: 20px;
 	padding: 5px;
 }
@@ -102,12 +102,13 @@
 					</div>
 					<div>
 						<button class="btn btn-primary"
-							style="margin-top: 0; min-width: 80px" type="button" id="search">검색</button>
+							style="margin-top: 0; min-width: 80px" type="button" id="mapSearch">검색</button>
 					</div>
 				</form>
 			</div>
 			<br>
 			<!-- Start 아파트별, 실거래가별 검색  -->
+			<!-- around page 에선 사용하지 않음
 			<div class="form-group md pr-3">
 				<form class="form-inline" action="" method="get">
 					<input type="hidden" name="act" value="searchCategory">
@@ -127,16 +128,17 @@
 
 				</form>
 			</div>
+			-->
 			<!-- End 아파트별, 실거래가별 검색  -->
 			<br>
 			<div class="row">
 				<div class="col-md-4">
 					<h3
-						style="background-color: #b3e6cc; font-size: 15pt; padding: 10px; border-radius: 10px; box-shadow: 0 8px 6px -6px black;">관심
-						지역 목록</h3>
+						style="background-color: #b3e6cc; font-size: 15pt; padding: 10px; border-radius: 10px; box-shadow: 0 8px 6px -6px black;">관심 지역
+						목록2</h3>
 					<hr>
 					<div style="height: 500px; overflow: scroll;">
-						<div id="deal-list" style="text-align: left;"></div>
+						<div id="deal-list2" style="text-align: left;"></div>
 					</div>
 				</div>
 				<div class="col-md-8" id="map"
