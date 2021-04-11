@@ -3,11 +3,13 @@
 ### 참여 페어
 - 김재현, 김효린 
 
+<br>
+<br>
 
 ### 실행화면 캡쳐 
 
 구현 기능: FrontEnd + BackEnd(Controller, Model(Dao, Service, Dto)
-![image](/uploads/8e63938f1f4fdc4c16a04650b6d85c59/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300316-b5f27780-9afa-11eb-9a3d-b538cadb0427.png)
 
 구현 기능: 전체 프로그램 동작/오류 없이 전체 동작 1
 ![image](/uploads/9f274dc6bbc868dc96217ceab9ab746c/image.png)
