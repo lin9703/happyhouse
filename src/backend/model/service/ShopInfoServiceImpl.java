@@ -11,15 +11,15 @@ import backend.model.dao.ShopDao;
 import backend.model.dao.ShopDaoImpl;
 
 public class ShopInfoServiceImpl implements ShopInfoService {
-	
+
 	private DongLocation dongLoc;
 	private List<Shop> shopList;
-	
+
 	public ShopInfoServiceImpl(String gu, String dong, String[] values) throws SQLException {
 		setDongLocation(dong);
 		setShopList(gu, dong, values);
 	}
-	
+
 	@Override
 	public void setDongLocation(String dong) throws SQLException {
 		dongLoc = DongLocationDaoImpl.getDongLocationDao().getDongLocation(dong);

@@ -3,7 +3,7 @@ package backend.dto;
 public class DongLocation {
 	private double lng;
 	private double lat;
-	
+
 	public DongLocation() {
 		super();
 	}
@@ -29,5 +29,5 @@ public class DongLocation {
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
-	
+
 }

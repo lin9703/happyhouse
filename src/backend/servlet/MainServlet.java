@@ -91,7 +91,7 @@ public class MainServlet extends HttpServlet {
 		String gu = request.getParameter("gu");
 		String dong = request.getParameter("dong");
 		String[] values = request.getParameterValues("category"); // category 값
-		
+
 		// 2. 비즈니스 로직
 		ShopInfoService service = new ShopInfoServiceImpl(gu, dong, values);
 

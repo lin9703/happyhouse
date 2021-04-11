@@ -61,8 +61,6 @@ public class Shop {
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
-	
-	
 
 	public String getCodeName() {
 		return codeName;
@@ -77,7 +75,5 @@ public class Shop {
 		return "Shop [shopName=" + shopName + ", gu=" + gu + ", dong=" + dong + ", lng=" + lng + ", lat=" + lat
 				+ ", codeName=" + codeName + "]";
 	}
-
-
 
 }

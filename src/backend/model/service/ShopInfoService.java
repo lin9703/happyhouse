@@ -8,6 +8,6 @@ import backend.dto.Shop;
 
 public interface ShopInfoService {
 	void setDongLocation(String dong) throws SQLException;
-	
+
 	void setShopList(String gu, String dong, String[] values) throws SQLException;
 }

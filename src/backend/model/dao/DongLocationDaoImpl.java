@@ -8,22 +8,22 @@ import java.sql.SQLException;
 import backend.dto.DongLocation;
 import backend.util.DBUtil;
 
-public class DongLocationDaoImpl implements DongLocationDao{
-	
+public class DongLocationDaoImpl implements DongLocationDao {
+
 	private static DongLocationDao impl = null;
 	private DBUtil util = DBUtil.getUtil();
 
 	private DongLocationDaoImpl() {
 	}
-	
+
 	public static DongLocationDao getDongLocationDao() {
-		if(impl == null) {
+		if (impl == null) {
 			impl = new DongLocationDaoImpl();
 		}
-		
+
 		return impl;
 	}
-	
+
 	@Override
 	public DongLocation getDongLocation(String dong) throws SQLException {
 		DongLocation dongLocation = null;

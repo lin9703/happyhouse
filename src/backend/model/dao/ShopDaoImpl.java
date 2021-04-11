@@ -30,13 +30,13 @@ public class ShopDaoImpl implements ShopDao {
 		List<Shop> shops = new ArrayList<>();
 		StringBuilder sql = new StringBuilder();
 		sql.append("select * from commercialarea where gu=? and dong=?");
-		
-		if(values != null && values.length != 0) {
+
+		if (values != null && values.length != 0) {
 			sql.append(" and codename1 in (");
-			for(int i=0; i<values.length; i++) {
+			for (int i = 0; i < values.length; i++) {
 				sql.append("'").append(values[i]).append("',");
 			}
-			sql.delete(sql.length()-1, sql.length());
+			sql.delete(sql.length() - 1, sql.length());
 			sql.append(")");
 		}
 
