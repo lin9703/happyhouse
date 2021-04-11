@@ -12,41 +12,38 @@
 ![image](https://user-images.githubusercontent.com/37198145/114300316-b5f27780-9afa-11eb-9a3d-b538cadb0427.png)
 
 구현 기능: 전체 프로그램 동작/오류 없이 전체 동작 1
-![image](/uploads/9f274dc6bbc868dc96217ceab9ab746c/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300342-cdc9fb80-9afa-11eb-88a1-16e1ec2e48d9.png)
 
 구현 기능: 회원관리페이지|회원정보 등록화면
-![result07](/uploads/6d42a30796f8cf2a63b00a57ca9d9c2c/result07.png)
+![image](https://user-images.githubusercontent.com/37198145/114300349-db7f8100-9afa-11eb-98a7-4f10295ddf7b.png)
 
 구현 기능: 회원관리페이지|회원정보 수정화면
-![image](/uploads/4b7802bf5dddffd973663707c89829e1/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300361-eb976080-9afa-11eb-81e7-2bfb8dd156b6.png)
 
 구현 기능: 회원관리페이지|회원정보 삭제화면
-![image](/uploads/4b7802bf5dddffd973663707c89829e1/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300367-f0f4ab00-9afa-11eb-9832-a8f3a43c9059.png)
 
 구현 기능: 회원관리페이지|회원정보 검색화면
-![image](/uploads/36bfbc7d374c27948125398d17797957/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300372-feaa3080-9afa-11eb-9283-4c4a8f065af9.png)
 
 구현 기능: 로그인/로그아웃 페이지
-![image](/uploads/1d0d3958256d73fdfa31c34c13e2a5c9/image.png)
-![image](/uploads/8d27f829f5292b019bb222f037815c7c/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300379-04077b00-9afb-11eb-8539-9bf60945ce52.png)
+![image](https://user-images.githubusercontent.com/37198145/114300390-15e91e00-9afb-11eb-9a59-e57d6a5c216a.png)
 
 구현 기능: 메인화면
-![image](/uploads/4eee90f091433bb93811f9f6a938b240/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300396-1c779580-9afb-11eb-88a0-f51657b528f1.png)
 
 구현 기능: 실거래가 검색,결과 페이지|동별화면
-![image](/uploads/4eee90f091433bb93811f9f6a938b240/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300408-28fbee00-9afb-11eb-83f2-ba0453c900d6.png)
 
 구현 기능: 실거래가 검색,결과 페이지|아파트별검색화면
-![image](/uploads/e905960d20fd536f3d0ce826d5863a13/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300412-2dc0a200-9afb-11eb-9fb8-c65b0a984827.png)
 
 구현 기능: 실거래가 검색,결과 페이지|실거래가별검색화면
-![image](/uploads/7b7a0b2370e2ee8353e8c7285bb7415d/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300443-53e64200-9afb-11eb-951e-9eaaf3e07a92.png)
 
-구현 기능: 관심지역 데이터 관리 (동별 추가)
-![image](/uploads/4bf21d59ec6cc63532a8d229fae223b2/image.png)
+구현 기능: 관심지역 데이터 관리 (동별 검색)
+![image](https://user-images.githubusercontent.com/37198145/114300450-58aaf600-9afb-11eb-917e-e191fc081210.png)
 
 구현 기능: 동네 업종 정보 데이터 관리 (카테고리별 검색)
-![image](/uploads/5f535f0b137407fcf26aa71b892eb17d/image.png)
-
-<br> DB: Select 문 출력 결과
-<br>![image](/uploads/bfeb8502501c481bb98e9dcc6e29a865/image.png)
+![image](https://user-images.githubusercontent.com/37198145/114300469-6791a880-9afb-11eb-9fa3-0e5a5a054a57.png)
